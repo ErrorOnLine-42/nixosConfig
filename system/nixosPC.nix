@@ -27,12 +27,11 @@ let
                 yt-dlp
                 wineWowPackages.staging
                 winetricks
-                firefox
+                librewolf-bin
                 # libreoffice-fresh
                 # wootility
                 # (chromium.override {enableWideVine = true;})
             ] ++ ( with stable; [
-                # librewolf
             ]);
         };
     };
@@ -54,7 +53,7 @@ in {
         # cosmicDe
         # gnomeDe
         # silentBoot
-        # zramStuff
+        zramStuff
         apps
         base
         commonDe
@@ -66,6 +65,9 @@ in {
     boot = {
         loader = { efi.efiSysMountPoint = "/boot"; };
         kernelParams = [ "video=3840x2160@240" ];
+        tmp = {
+            useTmpfs = true;
+        };
     };
 
     fileSystems = {
